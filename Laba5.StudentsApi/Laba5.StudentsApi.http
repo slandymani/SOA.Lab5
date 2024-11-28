@@ -1,0 +1,6 @@
+@Laba5_StudentsApi_HostAddress = http://localhost:5246
+
+GET {{Laba5_StudentsApi_HostAddress}}/students?minScore=0&maxScore=5
+Accept: application/json
+
+###
