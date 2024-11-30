@@ -2,5 +2,5 @@ namespace Laba5.StudentsApi.Students;
 
 public interface IStudentService
 {
-    IEnumerable<Student> GetStudentsByScore(GetStudentsByScoreDto dto);
+    IEnumerable<Student> GetStudentsByScore(double minScore, double maxScore);
 }

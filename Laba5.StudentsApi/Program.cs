@@ -19,14 +19,13 @@ builder.Services.AddCors();
 var app = builder.Build();
 app.UseCors(cp => cp.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
-app.MapPost("/students", 
-    (IStudentService studentService, [FromBody] GetStudentsByScoreDto dto) =>
-        Results.Ok(studentService.GetStudentsByScore(dto)));
+app.MapGet("/students/minScore/{min}/maxScore/{max}", 
+    (IStudentService studentService, [FromRoute] double min, [FromRoute] double max) =>
+        Results.Ok(studentService.GetStudentsByScore(min, max)));
 
 app.Run();
 
 [JsonSerializable(typeof(IEnumerable<Student>))]
-[JsonSerializable(typeof(GetStudentsByScoreDto))]
 internal partial class AppJsonSerializerContext : JsonSerializerContext
 {
 }
